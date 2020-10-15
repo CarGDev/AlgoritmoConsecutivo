@@ -1,13 +1,14 @@
 const arrayFunction = (number, i, arrayValue) => {
   if (i === number - 1) return arrayValue
-  const valor =  arrayValue[i - 1] % 10
+  const ten = 10
+  const valor =  arrayValue[i - 1] % ten
   let valorActual
   switch (valor) {
     case 0:
-      valorActual = Math.imul(10, arrayValue[i - 1]) + 1
+      valorActual = Math.imul(ten, arrayValue[i - 1]) + 1
       break
     default:
-      valorActual = Math.imul(10, arrayValue[i - 1])
+      valorActual = Math.imul(ten, arrayValue[i - 1])
       break
   }
   return arrayFunction (number, ++i, arrayValue.concat(valorActual))
