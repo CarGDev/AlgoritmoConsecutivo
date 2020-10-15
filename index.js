@@ -1,17 +1,16 @@
-const arrayFunction = (number, i, arrayValue) => {
+const arrayFunction = (number, i, arrayValue, multiFactor) => {
   if (i === number - 1) return arrayValue
-  const ten = 10
-  const valor =  arrayValue[i - 1] % ten
+  const valor =  arrayValue[i - 1] % multiFactor
   let valorActual
   switch (valor) {
     case 0:
-      valorActual = Math.imul(ten, arrayValue[i - 1]) + 1
+      valorActual = Math.imul(multiFactor, arrayValue[i - 1]) + 1
       break
     default:
-      valorActual = Math.imul(ten, arrayValue[i - 1])
+      valorActual = Math.imul(multiFactor, arrayValue[i - 1])
       break
   }
-  return arrayFunction (number, ++i, arrayValue.concat(valorActual))
+  return arrayFunction (number, ++i, arrayValue.concat(valorActual), multiFactor)
 }
 
 const arrayResultante = (number, i, arrayResult, arrayValue) => {
@@ -38,13 +37,12 @@ const arrayToSum = (number, arraySum, i) => {
 const printAlgoritmo = () => (number) => {
   let arrayValue = [1]
   let arrayResult = [0]
-  arrayValue = arrayFunction(number, arrayValue[0], arrayValue)
-  arrayResult = arrayResultante(number, arrayValue[0], arrayResult, arrayValue)
-  arrayResult = arrayResult.map(x => x * 11)
+  let multiFactor = 10
   let arraySum = [1]
+  arrayValue = arrayFunction(number, arrayValue[0], arrayValue, multiFactor)
+  arrayResult = arrayResultante(number, arrayValue[0], arrayResult, arrayValue).map(x => x * (multiFactor + 1))
   arraySum = arrayToSum(number, arraySum, arraySum[0])
-  arrayResult = arrayResult.map((x, i) => x += arraySum[i])
-  return arrayResult.reverse()
+  return arrayResult.map((x, i) => x += arraySum[i]).reverse()
 }
 
 const algoritmo = (number) => {
