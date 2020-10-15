@@ -1,3 +1,3 @@
 # AlgoritmoConsecutivo
 
-![Algoritmo.jpg](./Algooritmo.JPG)
+![Algoritmo.jpg](/Algooritmo.JPG)
